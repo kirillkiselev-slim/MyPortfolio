@@ -10,14 +10,14 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
-          {% if not user.location.country == '' %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'map' %}">SeeMap</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'country' %}">ChangeLocation</a>
-            </li>
-          {% else %}
+        {% if user.userlocation.user %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'country' %}">ChangeYourLocation</a>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'country' %}">MapShare</a>
         </li>
