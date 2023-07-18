@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} MapMe {% endblock %}
+{% block content %}
+
+<div id="login-card" class="card">
+    <div class="card-body">
+        <h2 class="text-center">Choose your country!</h2>
+        <br>
+        <form action="{% url 'country' %}" method="POST"> {% csrf_token %}
+             <select class="form-select" id="country" name="country">
+                 <option class="selected" >Select your country...</option>
+                 {% for country in countries %}
+                    <option> {{ country.country }}</option>
+                 {% endfor %}
+             </select>
+            <br>
+            <div>
+            <button type="submit" id="button" class="btn btn-primary deep-purple btn-block ">Save</button>
+            </div>
+            {% if messages %}
+            <br>
+            <ul class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+#body {
+  font-family: 'Nunito';
+background-color:  #F9F6EE;
+}
+#login-card{
+    width:350px;
+    border-radius: 25px;
+    margin:150px auto;
+
+}
+
+#distinction{
+    border-radius:30px;
+    background-color: #ebf0fc;
+    border-color: #ebf0fc;
+    color: #4d5159;
+}
+
+#button{
+    border-radius:30px;
+
+}
+
+#btn{
+   position: absolute;
+   bottom: -35px;
+   padding: 5px;
+   margin: 0px 55px;
+   align-items: center;
+   border-radius: 5px"
+}
+#container{
+    margin-top:25px;
+}
+
+.btn-circle.btn-sm {
+            width: 40px;
+            height: 40px;
+            padding: 2px 0px;
+            border-radius: 25px;
+            font-size: 14px;
+            text-align: center;
+
+            margin: 8px;
+        }
+
+.shaky-message {
+  animation: shake 0.5s;
+  animation-iteration-count: 2;
+}
+
+@keyframes shake {
+  0% { transform: translateX(-2px); }
+  20% { transform: translateX(2px); }
+  40% { transform: translateX(-2px); }
+  60% { transform: translateX(2px); }
+  80% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+#errorlist{
+    color:red;
+    text-align: center;
+    font-size: 12px;
+    padding-bottom: 20px;
+
+}

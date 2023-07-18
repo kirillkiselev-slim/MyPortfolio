@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %} Register {% endblock %}
+{% block content %}
+
+
+<div id="login-card" class="card">
+    <div class="card-body">
+        <h2 class="text-center">Sign Up Form</h2>
+        <br>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username }}
+                {% if form.username.errors %}
+                <ul class="errorlist">
+                    {% for error in form.username.errors %}
+                    <p><li><strong>{{ error }}</strong></li></p>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.email }}
+                {% if form.email.errors %}
+                <ul class="errorlist">
+                    {% for error in form.email.errors %}
+                    <p><li><strong>{{ error }}</strong></li></p>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password1.errors %}
+                    <p><li><strong>{{ error }}</strong></li></p>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                <ul class="errorlist">
+                    {% for error in form.password2.errors %}
+                    <p><li><strong>{{ error }}</strong></li></p>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <button type="submit" id="button" class="btn btn-primary deep-purple btn-block">Submit</button>
+            <br>
+            <br>
+
+            <div id="btn" class="text-center">
+                <button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>
+                <button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>
+                <button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>
+            </div>
+
+            <p id="error-message" class="error-message"></p>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

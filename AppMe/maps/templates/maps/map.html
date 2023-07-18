@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}MapMe{% endblock %}
+{% block content %}
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-9">
+      <div id="map" style="height: 600px;"></div>
+    </div>
+    <div class="col-lg-3">
+      <div class="user-list-container">
+        <h3>Usernames and Countries:</h3>
+        <div class="user-list">
+          {% for country, usernames in country_usernames.items %}
+            <div class="country">
+              <h5>{{ country }}</h5>
+              <ul>
+                {% for username in usernames %}
+                  <li>{{ username }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <style>
+  .user-list-container {
+    height: 600px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .user-list {
+    padding: 10px;
+  }
+
+  .country {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .country h5 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .country ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .country li {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+
+<script>
+  var map = L.map('map').setView([54.5260, 15.2551], 1.5);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+    maxZoom: 18,
+  }).addTo(map);
+
+  {% for country, usernames in country_usernames.items %}
+    {% for location in countries %}
+      {% if location.country == country %}
+        var countryMarker = L.marker([{{ location.latitude }}, {{ location.longitude }}])
+          .addTo(map)
+          .bindPopup('<strong>{{ country }}</strong><br>{{ usernames|join:", " }}');
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</script>
+{% endblock %}
