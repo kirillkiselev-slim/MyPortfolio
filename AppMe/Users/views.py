@@ -26,7 +26,7 @@ def register_request(request):
             authenticate(username=username, password=password1)
             user = form.save()
             login(request, user)
-            return redirect('../maps')
+            return redirect('/')
 
     else:
         form = NewUserForm()

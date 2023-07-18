@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 import requests
 from .forms import UserCountry
 from django.contrib import messages
-from .models import Location , UserLocation
+from .models import Location  #UserLocation
 import folium
 import csv
 
@@ -30,9 +30,11 @@ def country(request):
 @login_required()
 def display_map(request):
     user_countries = UserLocation.objects.all()
+    print(user_countries)
 
     # Get all countries with their coordinates
     countries = Location.objects.all()
+    print(countries)
 
     # Create a list to store the usernames and countries
     country_usernames = {}
