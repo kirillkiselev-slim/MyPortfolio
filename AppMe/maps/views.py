@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 import requests
 from .forms import UserCountry
 from django.contrib import messages
-from .models import Location  #UserLocation
+from .models import Location, UserLocation
 import folium
 import csv
 

@@ -23,4 +23,5 @@ urlpatterns = [
     path('', homepage, name='homepage'),
     path('', include('Users.urls')),
     path('', include('maps.urls')),
+    path('', include('weather.urls')),
 ]
