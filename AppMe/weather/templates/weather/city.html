@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} City {% endblock %}
+{% block content %}
+{% load static %}
+
+<div>
+    <div id="login-card" class="card">
+        <div class="card-body">
+            <h2 class="text-center">Enter your city</h2>
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Enter your city" name="city">
+
+                <button class="btn btn-primary deep-purple btn-block" type="submit">Find out your weather</button>
+                {% if weather_data %}
+                {{ weather_data.city }}
+                {{ weather_data.temperature }}°C
+                <img src="https://api.openweathermap.org/img/w/{{ weather_data.icon }}.png" alt="ICON">
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
