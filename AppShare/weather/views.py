@@ -1,6 +1,6 @@
 import os
 import requests
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .forms import User_city
 from .models import UserCity
 from django.contrib import messages
@@ -64,5 +64,4 @@ def find_weather(city, api_key, current_weather_url):
         'temperature': round(response['main']['temp'] - 273.15, 2),
         'icon': response['weather'][0]['icon']
     }
-
     return weather_data
