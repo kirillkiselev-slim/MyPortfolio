@@ -10,10 +10,10 @@ class User_city(forms.ModelForm):
         with open("./hidden/API_KEY.txt", "r") as api_file:
             line = api_file.readline()
             API_KEY = line.strip("\n")
-            city = self.cleaned_data.get('city')
+            city = self.cleaned_data.get('city').lower()
             current_weather_url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
             response = requests.get(current_weather_url.format(city, API_KEY)).json()
             if response['cod'] == '404':
                 raise forms.ValidationError('Enter a valid city')
-            elif city in response['name']:
-                return city
+            elif city in response['name'].lower():
+                return city.upper()

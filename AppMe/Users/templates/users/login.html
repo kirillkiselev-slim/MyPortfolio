@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'inner-page.html' %}
 
 {% block title %} Login {% endblock %}
 {% block content %}
@@ -8,13 +8,15 @@
     <div class="card-body">
         <h2 class="text-center">Login form</h2>
         <br>
-        <form action="." method="POST"> {% csrf_token %}
+        <form action="." method="POST" class="form-inline"> {% csrf_token %}
                 <div class="form-group">
                     <input type="username" class="form-control" id="distinction" placeholder="Enter username" name="username">
                 </div>
+                <br>
                 <div class="form-group">
                     <input type="password" class="form-control" id="distinction" placeholder="Enter a password" name="password">
                 </div>
+                <br>
             {% if not request.user.is_authenticated %}
                 {% if messages %}
                     <ul class="messages">
@@ -26,17 +28,17 @@
             {% endif %}
 
 
-            <button type="submit" id="button" class="btn btn-primary deep-purple btn-block ">Submit</button>
-            <br>
-            <br>
-
-            <div id="btn" class="text-center">
-                <button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>
-                <button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>
-                <button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>
+            <div class="text-center"> <!-- Wrap the button in a container to center it -->
+                <button type="submit" id="buttonSubmit" class="btn btn-primary deep-purple">Submit</button>
             </div>
+            <br>
+            <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p><!--            <br>-->
+<!--            <div id="btn" class="text-center">-->
+<!--                <button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>-->
+<!--                <button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>-->
+<!--                <button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>-->
+<!--            </div>-->
 
-            <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
              <p id="error-message" class="error-message"></p>
 
         </form>

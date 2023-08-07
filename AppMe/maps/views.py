@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-import requests
+
 from .forms import UserCountry
 from django.contrib import messages
 from .models import Location, UserLocation
-import folium
-import csv
+
 
 @login_required()
 def country(request):

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'inner-page.html' %}
 {% block title %} City {% endblock %}
 {% block content %}
 
@@ -9,16 +9,18 @@
         <form action="{% url 'city' %}" method="POST"> {% csrf_token %}
              <input class="form-control" name="city">
             <br>
-            <div>
-            <button type="submit" id="button" class="btn btn-primary deep-purple btn-block ">Save</button>
+            <div class="text-center">
+            <button type="submit" id="buttonSubmit" class="btn btn-primary deep-purple btn-block ">Save</button>
             </div>
             {% if messages %}
             <br>
-            <ul class="messages">
+            <div class="text-center" >
+            <divclass="messages">
                 {% for message in messages %}
                     {{ message }}
                 {% endfor %}
-            </ul>
+            </div>
+            </div>
             {% endif %}
         </form>
     </div>

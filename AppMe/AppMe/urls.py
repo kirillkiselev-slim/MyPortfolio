@@ -24,4 +24,6 @@ urlpatterns = [
     path('', include('Users.urls')),
     path('', include('maps.urls')),
     path('', include('weather.urls')),
+    #path('accounts/', include('allauth.urls')),
+
 ]

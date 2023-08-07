@@ -26,7 +26,7 @@ def register_request(request):
             authenticate(username=username, password=password1)
             user = form.save()
             login(request, user)
-            return redirect('/')
+            return redirect('../maps')
 
     else:
         form = NewUserForm()
@@ -42,7 +42,7 @@ def login_request(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')
+                return redirect('../maps')
 
         messages.error(request,'Incorrect username or password!')
 

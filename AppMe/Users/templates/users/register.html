@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'inner-page.html' %}
 {% block title %} Register {% endblock %}
 {% block content %}
 
@@ -19,6 +19,7 @@
                 </ul>
                 {% endif %}
             </div>
+            <br>
             <div class="form-group">
                 {{ form.email }}
                 {% if form.email.errors %}
@@ -28,6 +29,7 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
+            <br>
             </div>
             <div class="form-group">
                 {{ form.password1 }}
@@ -38,6 +40,7 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
+            <br>
             </div>
             <div class="form-group">
                 {{ form.password2 }}
@@ -49,16 +52,18 @@
                 </ul>
                 {% endif %}
             </div>
-
-            <button type="submit" id="button" class="btn btn-primary deep-purple btn-block">Submit</button>
             <br>
-            <br>
-
-            <div id="btn" class="text-center">
-                <button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>
-                <button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>
-                <button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>
+            <div class="text-center">
+            <button type="submit" id="buttonSubmit" class="btn btn-primary deep-purple btn-block">Submit</button>
             </div>
+<!--            <br>-->
+<!--            <br>-->
+
+<!--            <div id="btn" class="text-center">-->
+<!--                <button type="button" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-facebook"></i></button>-->
+<!--                <button type="button" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-google"></i></button>-->
+<!--                <button type="button" class="btn btn-info btn-circle btn-sm"><i class="fa fa-twitter"></i></button>-->
+<!--            </div>-->
 
             <p id="error-message" class="error-message"></p>
 

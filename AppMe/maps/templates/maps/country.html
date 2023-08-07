@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'inner-page.html' %}
 {% block title %} MapMe {% endblock %}
 {% block content %}
 
@@ -14,8 +14,8 @@
                  {% endfor %}
              </select>
             <br>
-            <div>
-            <button type="submit" id="button" class="btn btn-primary deep-purple btn-block ">Save</button>
+            <div class="text-center">
+            <button type="submit" id="buttonSubmit" class="btn btn-primary deep-purple btn-block ">Save</button>
             </div>
             {% if messages %}
             <br>

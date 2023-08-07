@@ -4,9 +4,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import User_city
 from .models import UserCity
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 os.chdir('./weather')
 
+@login_required()
 def get_city(request):
     if request.method == 'POST':
         form = User_city(request.POST)
@@ -16,7 +18,7 @@ def get_city(request):
 
             user_city.city = city
             user_city.save()
-            return redirect("./")
+            return redirect("/weather")
         else:
             messages.error(request, "Enter a valid city")
     else:
@@ -26,33 +28,41 @@ def get_city(request):
     }
     return render(request, 'weather/city.html', context)
 
-# def city(request):
-#
-#     with open("./hidden/API_KEY.txt", "r") as api_file:
-#         line =  api_file.readline()
-#         API_KEY = line.strip("\n")
-#
-#     current_weather_url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
-#
-#     if request.method == 'POST':
-#         city = request.POST['city']
-#         weather_data = find_weather(city, API_KEY, current_weather_url)
-#
-#         context = {
-#             'weather_data': weather_data
-#         }
-#         return render(request, 'weather/city.html', context=context)
-#     else:
-#         return render(request, 'weather/city.html')
-#
-#
-# def find_weather(city, api_key, current_weather_url):
-#     response = requests.get(current_weather_url.format(city, api_key)).json()
-#
-#     weather_data = {
-#         'city': city,
-#         'temperature': round(response['main']['temp'] - 273.15, 2),
-#         'icon': response['weather'][0]['icon']
-#     }
-#
-#     return weather_data
+
+@login_required()
+def all_users_weather(request):
+
+    with open("./hidden/API_KEY.txt", "r") as api_file:
+        line =  api_file.readline()
+        API_KEY = line.strip("\n")
+
+    current_weather_url = "https://api.openweathermap.org/data/2.5/weather?q={}&appid={}"
+    cities = UserCity.objects.all()
+
+    weather_data_dict = {}
+    for city_obj in cities:
+        city = city_obj.city
+        weather_data = find_weather(city,API_KEY, current_weather_url)
+
+        weather_data_dict[city_obj.user] = weather_data
+        sorted_weather_data = dict(
+            sorted(weather_data_dict.items(), key=lambda item: item[1]['temperature'], reverse=True))
+
+        context = {
+            'weather_data': sorted_weather_data,
+        }
+
+    return render(request, 'weather/weather-users.html', context=context)
+
+
+
+def find_weather(city, api_key, current_weather_url):
+    response = requests.get(current_weather_url.format(city, api_key)).json()
+
+    weather_data = {
+        'city': city,
+        'temperature': round(response['main']['temp'] - 273.15, 2),
+        'icon': response['weather'][0]['icon']
+    }
+
+    return weather_data
