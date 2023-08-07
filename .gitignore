@@ -2,3 +2,5 @@
 
 
 /AppMe/weather/hidden/
+/AppMe/db.sqlite3
+.idea
