@@ -7,4 +7,3 @@ class UserCity(models.Model):
     def __str__(self):
        return self.city
 
-# Create your models here.
