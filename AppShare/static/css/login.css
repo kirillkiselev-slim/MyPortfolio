@@ -44,19 +44,7 @@ background-color:  #F9F6EE;
             margin: 8px;
         }
 
-.shaky-message {
-  animation: shake 0.5s;
-  animation-iteration-count: 2;
-}
 
-@keyframes shake {
-  0% { transform: translateX(-2px); }
-  20% { transform: translateX(2px); }
-  40% { transform: translateX(-2px); }
-  60% { transform: translateX(2px); }
-  80% { transform: translateX(-2px); }
-  100% { transform: translateX(0); }
-}
 
 #errorlist{
     color:red;
