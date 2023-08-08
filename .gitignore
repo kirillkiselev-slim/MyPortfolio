@@ -2,8 +2,10 @@
 /AppMe/weather/hidden/
 /AppMe/db.sqlite3
 .idea
-AppShare/.env
+AppShare/AppShare/SECRET_KEY
 db.sqlite3
 AppShare/db.sqlite3
+AppShare/SECRET_KEY
+
 
 
