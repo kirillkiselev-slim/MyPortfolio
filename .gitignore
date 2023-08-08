@@ -3,4 +3,7 @@
 /AppMe/db.sqlite3
 .idea
 AppShare/.env
+db.sqlite3
+AppShare/db.sqlite3
+
 
