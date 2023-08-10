@@ -6,7 +6,7 @@ from .models import UserCity
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-# os.chdir('./weather')
+os.chdir('./weather')
 
 @login_required()
 def get_city(request):
@@ -32,7 +32,7 @@ def get_city(request):
 @login_required()
 def all_users_weather(request):
 
-    with open("/Users/kirill_kiselev99/Dev/FirstProject/AppShare/weather/hidden/API_KEY.txt", "r") as api_file:
+    with open("./hidden/API_KEY.txt", "r") as api_file:
         line =  api_file.readline()
         API_KEY = line.strip("\n")
 
