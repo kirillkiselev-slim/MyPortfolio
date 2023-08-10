@@ -27,7 +27,7 @@ The main issue that I noticed on my website is related to the weather of all use
 To address this, I plan to implement data pagination and lazy loading for weather data. By fetching weather information in smaller chunks and loading it on-demand, I can significantly improve the page's performance.
 
 Design:
-I aim to add more clarity to my homepage and create a better title layout, positioned to the right of the picture.
+I aim to add more clarity to my homepage and create a better title layout, positioned to the right of the picture. On the page where the map is located, the '+' and '-' signs, along with the line below the map, override some content of the page. I plan on fixing that.
 
 
 In conclusion, AppShare is an ongoing project where I continuously seek to improve both its functionality and aesthetics. With a passion for learning and a dedication to delivering an exceptional user experience, I look forward to refining this web application and expanding its capabilities in the future.
